@@ -28,3 +28,18 @@ function playRound (playerSelection,computerSelection) {
     else if (playerSelection=="scissors" && computerSelection=="paper") {return "You won"}
     else {return "something went wrong"}
 };
+// make game()
+function game() {
+    playerScore = 0;
+    computerScore = 0;
+    for (let i=0; i<5; i++) {
+        playerSelection = prompt("Choose rock, paper or scissors");
+        computerSelection = computerPlay();
+        if (playRound(playerSelection,computerSelection) == "You won") { playerScore++;}
+        else if (playRound(playerSelection,computerSelection) =="You lost") {computerScore++;}
+        else {return "Invalid input"};
+        console.log("The score is: " + playerScore + " vs "+computerScore)
+        if (playerScore==3) {return "You won the game"}
+        else if (computerScore==3) {return "You lost the game"};
+    }
+}
