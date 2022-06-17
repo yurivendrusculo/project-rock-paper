@@ -8,11 +8,12 @@ function getRandomInt(min,max) {
     return Math.floor(Math.random()*(max-min)) +min;
 }
 function computerPlay() {
-        if (getRandomInt(0,4)==1) {
+    let pcChoice = getRandomInt(0,4)
+        if (pcChoice===1) {
             return "Rock"
-        } else if (getRandomInt(0,4)==2) {
+        } else if (pcChoice===2) {
             return "Paper"
-        } else (getRandomInt(0,4)==3) 
+        } else (pcChoice===3) 
             return "Scissors"
 };
 
@@ -32,10 +33,11 @@ function playRound (playerSelection,computerSelection) {
 function game() {
     playerScore = 0;
     computerScore = 0;
-    for (let i=0; i<5; i++) {
+    while (playerScore < 3 || computerScore < 3) {
         playerSelection = prompt("Choose rock, paper or scissors");
         computerSelection = computerPlay();
-        if (playRound(playerSelection,computerSelection) == "You won") { playerScore++;}
+        if (playRound(playerSelection,computerSelection)== "It is a tie") console.log("It was a tie");
+        else if (playRound(playerSelection,computerSelection) == "You won") { playerScore++;}
         else if (playRound(playerSelection,computerSelection) =="You lost") {computerScore++;}
         else {return "Invalid input"};
         console.log("The score is: " + playerScore + " vs "+computerScore)
